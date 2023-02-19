@@ -14,7 +14,7 @@ const schema = yup.object().shape({
  
 const ContactForm = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(selectors.getContacts);
+  const contacts = useSelector(selectors.selectContacts);
   const numberId = nanoid();
   const nameId = nanoid();
 

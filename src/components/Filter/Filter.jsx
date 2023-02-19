@@ -5,7 +5,7 @@ import { setFilter } from '../../redux/slicers/filterSlice';
 
 const Filter = () => {
   const dispatch = useDispatch();
-  const filter = useSelector(selectors.getFilter);
+  const filter = useSelector(selectors.selectFilter);
 
   const onChange = (e) => {
     dispatch(setFilter(e.target.value.toLowerCase()))

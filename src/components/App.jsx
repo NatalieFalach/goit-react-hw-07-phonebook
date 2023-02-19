@@ -8,9 +8,9 @@ import { operations, selectors } from "../redux/";
 
 export const App = () => {
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectors.getIsLoading);
-  const error = useSelector(selectors.getError);
-  
+  const isLoading = useSelector(selectors.selectIsLoading);
+  const error = useSelector(selectors.selectError);
+
   useEffect(() => {
     dispatch(operations.fetchContacts());
   }, [dispatch]);
