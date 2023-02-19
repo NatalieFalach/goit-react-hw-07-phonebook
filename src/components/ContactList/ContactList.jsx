@@ -25,7 +25,7 @@ const ContactList = () => {
       {
         filterContacts(contacts, filter).map(item => {
           return <li className={styles.item} key={item.id}>{item.name}: {item.phone}
-            <button className={styles.btnDelete} onClick={() => onRemoveContact(item.id)}>Delete { item.id }</button></li> 
+            <button className={styles.btnDelete} onClick={() => onRemoveContact(item.id)}>Delete</button></li> 
         })
       }
     </ul>
