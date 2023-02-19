@@ -1,11 +1,11 @@
 import styles from './Filter.module.css';
 import { useSelector, useDispatch } from "react-redux";
-import { getFilter } from 'redux/selectors';
-import { setFilter } from '../../redux/slicers/filterSlice'
+import { selectors } from '../../redux';
+import { setFilter } from '../../redux/slicers/filterSlice';
 
 const Filter = () => {
   const dispatch = useDispatch();
-  const filter = useSelector(getFilter);
+  const filter = useSelector(selectors.getFilter);
 
   const onChange = (e) => {
     dispatch(setFilter(e.target.value.toLowerCase()))

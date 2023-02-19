@@ -4,23 +4,22 @@ import { Formik, Form, Field,ErrorMessage } from 'formik'
 import * as yup from 'yup';
 import "yup-phone";
 import { useDispatch, useSelector } from "react-redux";
-import { addContact } from "redux/slicers/contactsSlice";
-import { getContacts } from "redux/selectors";
+import { operations, selectors } from '../../redux';
 import toast, { Toaster } from 'react-hot-toast';
 
 const schema = yup.object().shape({
   name: yup.string().required(),
-  number: yup.string().phone().required()
+  phone: yup.string().phone().required()
 })
  
 const ContactForm = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectors.getContacts);
   const numberId = nanoid();
   const nameId = nanoid();
 
   const initialValues = {
-    name: '', number: ''
+    name: '', phone: ''
   }
   
   const hendleSumbmit = (values, { resetForm }) => {
@@ -29,7 +28,7 @@ const ContactForm = () => {
     if (isExists) {
       toast.error(`${name} is alredy in contacts`);
     } else {
-      dispatch(addContact(values));
+      dispatch(operations.addContact(values));
     }
     resetForm();
   }
@@ -49,11 +48,11 @@ const ContactForm = () => {
             <Field
               id={numberId}
               type="tel"
-              name="number"
+              name="phone"
               title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             />
-          <ErrorMessage className={styles.errorMessage} name="number" component='div'/>
-          <button className={styles.btnSubmit}type="submit">Add contact</button>
+          <ErrorMessage className={styles.errorMessage} name="phone" component='div'/>
+          <button className={styles.btnSubmit} type="submit">Add contact</button>
         </Form>
       </Formik>
       <Toaster position="top-right" />
